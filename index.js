@@ -27,7 +27,7 @@ async function runDialogflowQuery(text, sessionId, language_code, credentials) {
   const result = responses[0].queryResult;
   return result;
 }
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   res.send('welcome on dialogflow proxy')
   )}
 // Tutorial 1 - Basic Dialogflow extarnal endpoint
