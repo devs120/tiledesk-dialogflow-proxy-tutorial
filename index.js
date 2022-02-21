@@ -27,7 +27,9 @@ async function runDialogflowQuery(text, sessionId, language_code, credentials) {
   const result = responses[0].queryResult;
   return result;
 }
-
+app.get("/", (req, res) => {
+  res.send('welcome on dialogflow proxy')
+  )}
 // Tutorial 1 - Basic Dialogflow extarnal endpoint
 app.post("/bot/:botid", (req, res) => {
   // for cloud apis initialize like the this:
