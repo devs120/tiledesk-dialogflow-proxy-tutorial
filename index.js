@@ -214,5 +214,5 @@ app.post('/dfwebhook/:project_id', (req, res) => {
 
 var port = process.env.PORT || 3001;
 app.listen(port, () => {
-  console.log('server started');
+  console.log(`server started on PORT ${port}`);
 });
