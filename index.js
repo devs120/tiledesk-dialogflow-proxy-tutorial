@@ -33,7 +33,7 @@ app.get("/home", (req, res) => {
 // Tutorial 1 - Basic Dialogflow extarnal endpoint
 app.post("/bot/:botid", (req, res) => {
   // for cloud apis initialize like the this:
-  // const tdclient = new TiledeskChatbotClient({request: req})
+  const tdclient = new TiledeskChatbotClient({request: req, APIKEY: '____APIKEY____'})
   const cbclient = new TiledeskChatbotClient(
     {
       request: req,
@@ -50,14 +50,14 @@ app.post("/bot/:botid", (req, res) => {
   //   });
   // const tdclient = new TiledeskChatbotClient({request: req, APIURL: 'YOUR API ENDPOINT'});
   const botid = req.params.botid;
-  const conversation = cbclient.supportRequest
+  const conversation = tdclient.supportRequest
   // immediately reply back
   res.status(200).send({"success":true});
   // reply messages are sent asynchronously
   const dialogflow_session_id = conversation.request_id
   const lang = 'en-EN' // lang must be the same of the Dialogflow Agent
   const credentials = JSON.parse(process.env[botid])
-  runDialogflowQuery(cbclient.text, dialogflow_session_id, lang, credentials)
+  runDialogflowQuery(tdclient.text, dialogflow_session_id, lang, credentials)
   .then(function(result) {
     console.log("query result: ", JSON.stringify(result))
     console.log("is fallback:", result.intent.isFallback)
@@ -69,7 +69,7 @@ app.post("/bot/:botid", (req, res) => {
         "text": reply_text
       }
       console.log('msg--------------',msg)
-      cbclient.tiledeskClient.sendMessage(msg, function (err) {
+      tdclient.sendMessage(msg, function (err) {
         console.log("Message sent.");
       })
     }
