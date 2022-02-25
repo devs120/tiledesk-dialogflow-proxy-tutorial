@@ -130,6 +130,7 @@ const MAX_FALLBACKS = 4;
 app.post("/bot-fallback-handoff/:botid", (req, res) => {
   const tdclient = new TiledeskChatbotClient(
     {request: req,
+     APIKEY:'__APIKEY__',
      APIURL: 'https://dialogflow-proxy-sig.herokuapp.com'
     });
   console.log("tdclient", tdclient)
