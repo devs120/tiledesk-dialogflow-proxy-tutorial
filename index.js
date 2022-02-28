@@ -104,7 +104,7 @@ app.post("/microlang-bot/:botid", (req, res) => {
       const reply_text = result['fulfillmentText'];
       const parsed_reply = TiledeskChatbotUtil.parseReply(reply_text);
       var msg = parsed_reply.message;
-      if(msg.substr(-5) == agent){
+      if(msg  == We are looking for an operator \agent){
         msg = msg.substr(6)
       }
       // NOTE: you can also use parts of the parsed message, like this
