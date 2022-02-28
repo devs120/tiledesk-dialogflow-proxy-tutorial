@@ -106,7 +106,7 @@ app.post("/microlang-bot/:botid", (req, res) => {
       var msg = parsed_reply.message;
       console.log('-------------------',msg.text)
       if(msg.text  == "Thank you, one of our Business Consultants will contact you shortly. If you would like to book an appointment please check here (calendly link) \\agent"){
-        msg = msg.substr(-6)
+        msg = msg.substring(1,10)
       }
       // NOTE: you can also use parts of the parsed message, like this
       // var reply = {
